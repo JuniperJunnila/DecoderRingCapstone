@@ -1,5 +1,5 @@
 const substitutionModule = (function () {
-  //helper function to get a key from an object by inputting the value
+  //helper function to get a key from an object by inputting the value 
   function _getKeyByValue(codeKey, letter) {
     for (const kv of codeKey.entries()) {
       if (kv[1] === letter) return kv[0];
@@ -8,11 +8,10 @@ const substitutionModule = (function () {
 
   function substitution(input, alphabet, encode = true) {
     if (typeof alphabet != "string" || alphabet.length != 26) return false;
-    //checks that every character of the inputted alphabet is unique
+    //checks that every character of the input alphabet is unique
     let uniquenessTest = alphabet.split("");
     let tester = uniquenessTest.reduce((acc, letter) => {
       if (acc[letter] === 1) {
-        console.log("here I am");
         return false;
       }
       acc[letter] = 1;
@@ -25,7 +24,7 @@ const substitutionModule = (function () {
     const alphabetSecondary = alphabet.toLowerCase().split("");
     let inputArr = input.toLowerCase().split("");
 
-    //creates a new object with the keys as the regular alphabet and values as the inputted new alphabet
+    //creates a new object with the keys as the regular alphabet and values as the input new alphabet
     const codeKey = new Map();
     alphabetPrime.map((letter) => {
       codeKey.set(letter, alphabetSecondary[alphabetPrime.indexOf(letter)]);

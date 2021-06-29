@@ -7,7 +7,7 @@ const caesarModule = (function () {
   function _toAscii(alphanumeric) {
     return alphanumeric.charCodeAt();
   }
-  //shifts each letter of the inputted string based on the shift value
+  //shifts each letter of the input string based on the shift value
   function caesar(input, shift, encode = true) {
     if (!shift || shift > 25 || shift < -25) return false;
     //if decoding, flips the shift value
