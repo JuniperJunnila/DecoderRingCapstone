@@ -2,9 +2,7 @@ const polybiusModule = (function () {
   const codeKey = new Map();
   let polyKeyOnes = 1;
   let polyKeyTens = 0;
-  const alphabet = "a b c d e f g h i/j k l m n o p q r s t u v w x y z".split(
-    " "
-  );
+  const alphabet = "a b c d e f g h i/j k l m n o p q r s t u v w x y z".split(" ");
   const digits = "0123456789";
 
   //maps every letter into an object with the keys being letters
@@ -54,13 +52,13 @@ const polybiusModule = (function () {
     }
     input = input.toLowerCase();
     let inputArr = input.split("");
-    //checks if the input is numbers or letters
-    if (digits.includes(inputArr[0])) {
+    //if decoding, break into pairs of digits
+    if (!encode) {
       inputArr = _doubleDigits(inputArr);
     }
     //maps, then immdeiately joins input array into a string of numbers,
     //with special cases for the letters i and j, and for spaces
-    function encoder() {
+    function _encoder() {
       return inputArr
         .map((letter) => {
           if (letter === " ") return letter;
@@ -70,7 +68,7 @@ const polybiusModule = (function () {
         .join("");
     }
     //maps, then immdeiately joins input array into a string of letters with a special case for space
-    function decoder() {
+    function _decoder() {
       return inputArr
         .map((num) => {
           if (num === " ") return num;
@@ -80,9 +78,9 @@ const polybiusModule = (function () {
     }
     //returns depending on whether it's encoding or decoding
     if (encode) {
-      return encoder();
+      return _encoder();
     } else {
-      return decoder();
+      return _decoder();
     }
   }
 
